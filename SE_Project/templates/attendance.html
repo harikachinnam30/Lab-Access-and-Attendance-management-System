@@ -1,0 +1,21 @@
+{% include 'header.html' %}
+<script src="{{ url_for('static',filename='js/user.js') }}"></script>
+<body>
+	<div class="container-fluid" id="main">
+		{% include 'top_menus.html' %}  	
+		<div class="row row-offcanvas row-offcanvas-left">   
+			{% include 'left_menus.html' %}	
+			<div class="col-md-9 col-lg-10 main"> 
+				<br>
+				<h3>Take Attendance</h3>
+				<br><br>				
+				<div class="mx-auto" style="width: 700px;">
+				  <img src="{{ url_for('take_attendance', userid=userid) }}">
+				</div>
+				<br><br>
+
+			</div>
+		</div>
+	</div>
+</body>
+</html>

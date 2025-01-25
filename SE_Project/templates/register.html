@@ -1,0 +1,54 @@
+{% include 'header.html' %}
+<head>
+    <style>
+        /* CSS for gradient background */
+        .gradient-background {
+            background: linear-gradient(300deg, #00bfff, #ff4c68, #ef8172);
+            height: 100vh;
+        }
+    </style>
+</head>
+<body class="gradient-background">
+    <div class="container-fluid d-flex justify-content-center align-items-center h-100">
+        <div class="row">
+            <div class="col-md-30 mx-auto col-lg-30 main"> 
+                <h1 class="text-center mb-4" style="color: black; font-family: sans-serif;"><b>Admin Login</b></h1>
+                <div class="col-md-30 mx-auto col-lg-50 ">
+                    <form class="p-4 p-md-5 border rounded-3 bg-body-tertiary" action="{{ url_for('register') }}" method="post" style="border-radius: 20px;">
+                        {% if message is defined and message %}
+                            <div class="alert alert-warning">{{ message }}</div>
+                        {% endif %}
+                        <div class="form-floating mb-3">
+                            <label for="floatingInput" style="font-size: larger;">Username</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="floatingInput"
+                              placeholder="Enter Username"
+                              name="username"
+                            />
+                            
+                        </div>
+                        <div class="form-floating mb-3">
+                            <label for="floatingPassword" style="font-size: larger;">Password</label>
+                            <input
+                              type="password"
+                              class="form-control"
+                              id="floatingPassword"
+                              placeholder="Password"
+                              name="password"
+                            />
+                        </div>
+                        <button class="w-100 btn btn-lg btn-primary gradient-background-button" type="submit">
+                            Log In
+                        </button>
+                        <hr class="my-4" />
+                        <p class="bottom"> <font size="+1">Already have an account? </font><a class="bottom" href="{{url_for('dashboard')}}"> <b><font size="+1">Login here</font></b></a></p>
+                    </form>
+                    <hr>         
+                </div>       
+            </div>     
+        </div>
+    </div>
+</body>
+</html>

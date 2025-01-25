@@ -1,0 +1,132 @@
+{% include 'header.html' %}
+<!-- <body>
+  <div class="container-fluid" id="main">
+  {% include 'top_menus.html' %}  	
+    <div class="row row-offcanvas row-offcanvas-left">      
+      <div class="col-md-9 col-lg-10 main"> 
+		<h2>User Login</h2>
+		<form action="{{ url_for('login') }}" method="post">
+			{% if message is defined and message %}
+				<div class="alert alert-warning">{{ message }}</div>
+			{% endif %}
+			<div class="form-group">
+				<label for="email">Email:</label>
+				<input type="email" class="form-control" id="email" name="email" placeholder="Enter email" name="email">
+			</div>
+			<div class="form-group">
+				<label for="pwd">Password:</label>
+				<input type="password" class="form-control" id="password" name="password" placeholder="Enter password" name="pswd">
+			</div>    
+			<button type="submit" class="btn btn-primary">Login</button>
+			<p class="bottom">Dont't have an account?  <a class="bottom" href="{{url_for('register')}}"> Register here</a></p>
+		</form>
+        
+        <hr>         
+       </div>       
+      </div>     
+    </div>
+  </body>
+</html> -->
+
+
+  <body class="gradient-background">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">Home</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Dropdown
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+            </li>
+          </ul>
+          <div class="col-md-3 text-end">
+            <button type="button" class="btn btn-outline-primary me-2" href="/login">Login</button>
+            <button type="button" class="btn btn-primary">Sign-up</button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container col-xl-10 col-xxl-8 px-4 py-5">
+      <div class="row align-items-center g-lg-5 py-5">
+        <div class="col-lg-7 text-center text-lg-start">
+          <h1 class="display-5 fw-bold lh-1 text-body-emphasis mb-3" style="font-family: sans-serif; color: #000000; font-weight: 900;">
+              <span><b>Welcome to the <br> Lab Access System</b></span>
+          </h1>
+          <h5 class="col-lg-10 fs-4 dark-black-text"  style="color: #000000;">
+              Please login to verify yourself.
+          </h5>
+      </div>
+      
+        <div class="col-md-10 mx-auto col-lg-5 ">
+          <form class="p-4 p-md-5 border rounded bg-body-tertiary" style="border-radius:20px !important; border-width: 2px !important;"action="{{ url_for('login') }}" method="post">
+			{% if message is defined and message %}
+				<div class="alert alert-warning">{{ message }}</div>
+			{% endif %}
+            <div class="form-floating mb-3">
+              <label for="floatingInput"><font size="+1">Email address</font></label>
+              <input
+                type="email"
+                class="form-control"
+                id="floatingInput"
+                placeholder="name@example.com"
+				name="email"
+              />
+            </div>
+            <div class="form-floating mb-3">
+              <label for="floatingPassword"><font size="+1">Card Number</font></label>
+              <input
+                type="card_number"
+                class="form-control"
+                id="floatingPassword"
+                placeholder="Card ID"
+				name="password"
+              />
+            </div>
+            <button class="w-100 btn btn-lg btn-primary gradient-background-button" type="submit">
+              Log In
+            </button>
+            <hr class="my-4" />
+            <p class="bottom"> <font size="+1">Are you an Admin? </font>   <a class="bottom" href="{{url_for('register')}}"> <b><font size="+1">Login here</font></b></a></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

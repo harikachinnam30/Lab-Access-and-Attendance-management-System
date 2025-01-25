@@ -1,0 +1,119 @@
+<!-- Main HTML file (e.g., index.html) -->
+
+{% include 'header.html' %}
+<head>
+    <style>
+        /* CSS for gradient background */
+        .gradient-background {
+            background: linear-gradient(300deg, #00bfff, #ff4c68, #ef8172);
+            height: 100vh;
+        }
+    </style>
+</head>
+<body class="gradient-background">
+    <div class="container-fluid" id="main">
+        {% include 'top_menus.html' %}      
+        <div class="row row-offcanvas row-offcanvas-left">   
+          {% include 'left_menus.html' %}   
+          <div class="col-md-9 col-lg-10 main"> 
+          <br>
+            <h3>User Details</h3>
+              <br>
+              <div class="float-right mb-2 col-md-2">
+                <button type="button" id="addUser" class="btn btn-info" title="Add book"><span class="glyphicon glyphicon-plus"></span>Add User</button>
+            </div>
+            <br><br>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th style="font-size: 18px;">First Name</th>
+                        <th style="font-size: 18px;">Last Name</th>
+                        <th style="font-size: 18px;">Email</th>
+                        <th style="font-size: 18px;">Card Number</th>
+                        <th style="font-size: 18px;">Role</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in users %}
+                    <tr>
+                        <td style="font-size: 15px !important;">{{user.first_name}}</td>
+                        <td style="font-size: 15px !important;">{{user.last_name}}</td>
+                        <td style="font-size: 15px !important;">{{user.email}}</td>
+                        <td style="font-size: 15px !important;">{{user.card_number}}</td>
+                        <td style="font-size: 15px !important;">{{user.role}}</td>
+                        <td><a href="{{url_for('view_user', userid=user.id)}}" class="btn btn-success">View</a></td>
+                        <td><a href="{{url_for('edit_user', userid=user.id)}}" class="btn btn-primary">Edit</a></td>
+                        <td><a href="{{url_for('delete_user', userid=user.id)}}" class="btn btn-danger">Delete</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <hr>
+            </div>
+            </div>
+            </div>
+            <div id="userModal" class="modal fade">
+                <div class="modal-dialog">
+                    <form method="post" id="userForm" action="{{ url_for('save_user')}}" enctype="multipart/form-data">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title"><i class="fa fa-plus"></i> Add User</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="role" class="control-label">Role</label>
+                                    <select class="form-control" id="role" name="role">
+                                        <option value="">Select Type</option>
+                                        <option value="scientist">scientist</option>
+                                        <option value="security">security</option>
+                                        <option value="staff">staff</option>
+                                        <option value="associate scientist">associate scientist</option>
+                                        <option value="developer">developer</option>
+                                        <option value="engineer">engineer</option>
+                                        <option value="manager">manager</option>
+                                        <option value="stakeholder">stakeholder</option>
+                                        <option value="ceo">ceo</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="first_name" class="control-label">First Name</label>
+                                    <input type="text" name="first_name" id="first_name" autocomplete="off" class="form-control" placeholder="First name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="last_name" class="control-label">Last Name</label>
+                                    <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Last name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="email" class="control-label">Email</label>
+                                    <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+                                </div>
+                                <div class="form-group">
+                                    <label for="card_number" class="control-label">Card ID</label>
+                                    <input type="text" class="form-control" id="card_number" name="card_number" value="{{ last_uber }}" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label for="file" class="control-label">Picture</label>
+                                    <input type="file" name="file" class="form-control">
+                                </div> 
+                            </div>
+                            <div class="modal-footer">
+                                <input type="hidden" name="userid" id="userid">
+                                <input type="hidden" name="action" id="action" value="">
+                                <input type="submit" name="save" id="save" class="btn btn-info" value="Save">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <script>
+                // JavaScript to show the modal when the "Add User" button is clicked
+                document.getElementById('addUser').addEventListener('click', function() {
+                    $('#userModal').modal('show');
+                });
+            </script>
+            </body>
+            </html>

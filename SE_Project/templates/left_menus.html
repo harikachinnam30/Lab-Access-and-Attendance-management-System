@@ -1,0 +1,16 @@
+<div class="col-md-3 col-lg-2 sidebar-offcanvas" id="sidebar" role="navigation">
+<ul class="nav flex-column pl-1 leftMenus">			
+{% if session['role'] == 'admin' %}
+    <li class="nav-item"><a class="nav-link" style="color: blue;">Welcome !!</a></li>
+	<li class="nav-item"><a class="nav-link" href="{{ url_for('users') }}">Manage Users</a></li>
+{% else %}
+    <li class="nav-item"><a class="nav-link" href="{{ url_for('dashboard') }}">Dashboard</a></li>
+	<li class="nav-item"><a class="nav-link" href="{{ url_for('attendance') }}">Attendance</a></li>
+{% endif %}
+<li class="nav-item"><a class="nav-link" href="{{ url_for('logout') }}">Logout</a></li>
+</ul>
+</div>
+
+
+
+
